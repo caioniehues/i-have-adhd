@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0 — 2026-06-11
+
+### Added
+- **Rule 10: the interview gate.** Before substantive work starts, every assumption forced by the prompt is sorted: cosmetic doubts (a name, a default) stay self-decided per Rule 8; deliverable-changing doubts (intent, scope, audience, constraints — a wrong guess means redone work) become tappable structured-question rounds, up to four questions each, recommended option first so a round clears in taps. Rounds repeat until doubts run out, then a one-to-two-line spec echo and work starts in the same message — never "shall I proceed?". Ambiguity-gated with a deliberately low bar (forming an assumption counts as a doubt), but doubts the codebase or the conversation already answer are struck, never re-asked. Degraded modes specified: missing question tool → compact numbered list; unattended runs → self-pick recommended options and name every resolved doubt in the spec echo; plan mode → the spec becomes the plan.
+- **`/i-have-adhd:interview` skill.** Explicit trigger ("interview me"): fires the gate regardless of prompt clarity and promotes cosmetic doubts into the rounds. Thin loader over the output style, same as `/i-have-adhd:apply`.
+
+### Changed
+- **Rule 8 and break-rule 5 now route through the interview.** "Real ambiguity → one short clarifying question" is replaced by the doubt vocabulary and a pointer to Rule 10; destructive-action confirms explicitly stay under break-rule 3 — never batched into a round, never labeled "(Recommended)".
+
 ## 1.1.0 — 2026-06-11
 
 ### Changed

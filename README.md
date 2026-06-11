@@ -20,7 +20,7 @@ claude plugin marketplace add ./i-have-adhd
 claude plugin install i-have-adhd@i-have-adhd
 ```
 
-Open Claude Code — the plugin ships an output style that auto-applies while the plugin is enabled, so the rules are active from message one (no command, no hook). To re-apply them mid-session: `/i-have-adhd:apply`.
+Open Claude Code — the plugin ships an output style that auto-applies while the plugin is enabled, so the rules are active from message one (no command, no hook). To re-apply them mid-session: `/i-have-adhd:apply`. To be interviewed into a spec before work starts: `/i-have-adhd:interview` (or just say "interview me").
 
 To disable: `claude plugin disable i-have-adhd` or use `/plugin disable i-have-adhd` from within CC. This removes the output style too.
 
@@ -65,7 +65,7 @@ Because it's personal, the rules encode my preferences (down to how often an ★
 
 ## The rules
 
-Rule 0 plus 9 rules. Full text in [the output style](./output-styles/i-have-adhd.md).
+Rule 0 plus 10 rules. Full text in [the output style](./output-styles/i-have-adhd.md).
 
 0. Do the work, don't assign it — never hand the reader a command Claude can run itself.
 1. Lead with the outcome or the reader's action; end when the answer is done.
@@ -77,6 +77,7 @@ Rule 0 plus 9 rules. Full text in [the output style](./output-styles/i-have-adhd
 7. Cap unordered lists at five; never compress a procedure or cut a findings inventory.
 8. Decide the small things yourself — every question hands the reader a task.
 9. Box the rare non-obvious thing as an ★ Insight — two sentences max, never the first or last line.
+10. Interview before guessing — doubts that would change the deliverable become tappable question rounds, then a spec echo, then work.
 
 Plus: silence between tool calls, and a re-grounding summary after long runs.
 
@@ -91,6 +92,12 @@ the signature — auth that "works" with it is
 silently unverified.
 ───────────────────────────────────────────
 ```
+
+## The interview
+
+Writing a clear spec is the hardest part of prompting with ADHD; tapping through multiple-choice questions is cheap. So when a prompt forces an assumption that would change what gets built — intent, scope, audience, constraints — Claude interviews instead of silently guessing: batched rounds of up to four tappable questions, recommended answer always first (it's the guess Claude would have made silently, surfaced for a one-tap veto). When the doubts run out, it echoes the agreed spec in a line or two and starts immediately. Small calls (a name, a default) are still decided without asking, and nothing you already said — in the prompt, the conversation, or the code — gets re-asked.
+
+Say "interview me" or run `/i-have-adhd:interview` to fire it on demand, even on a prompt that looks clear.
 
 ## Tune it
 
