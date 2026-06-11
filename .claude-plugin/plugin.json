@@ -1,4 +1,10 @@
 {
   "name": "i-have-adhd",
-  "description": "Shape Claude Code output for an ADHD reader: lead with the next action, number steps, suppress tangents, restate state, make wins visible."
+  "version": "1.0.0",
+  "description": "ADHD-friendly output shaping for Claude Code. Rules load automatically at session start via a SessionStart hook; /i-have-adhd:apply re-applies them mid-session.",
+  "author": {
+    "name": "Caio Niehues",
+    "email": "cniehues1@gmail.com"
+  },
+  "homepage": "https://github.com/caioniehues/i-have-adhd"
 }

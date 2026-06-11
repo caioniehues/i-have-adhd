@@ -3,7 +3,8 @@
   "name": "i-have-adhd",
   "description": "Shape Claude Code output for an ADHD reader. Action-first, numbered steps, no tangents.",
   "owner": {
-    "name": "Ayoub G."
+    "name": "Caio Niehues",
+    "email": "cniehues1@gmail.com"
   },
   "plugins": [
     {

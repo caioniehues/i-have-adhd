@@ -5,27 +5,27 @@
   <strong align="center">ADHD-friendly outputs. No ADHD diagnosis needed!</strong>
 </p>
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/ayghri/i-have-adhd?style=flat" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/caioniehues/i-have-adhd?style=flat" alt="License"></a>
 </p>
 
 
 ## Install
 
 ```bash
-git clone https://github.com/ayghri/i-have-adhd ./i-have-adhd
+git clone https://github.com/caioniehues/i-have-adhd ./i-have-adhd
 claude plugin marketplace add ./i-have-adhd
 claude plugin install i-have-adhd@i-have-adhd
 ```
 
-In Claude Code: `/i-have-adhd`.
+Open Claude Code — the rules load automatically at session start (a `SessionStart` hook injects them; no command needed). To re-apply them mid-session: `/i-have-adhd:apply`.
 
-To disable: `claude plugin disable i-have-adhd` or use `/plugin disable i-have-adhd` from within CC.
+To disable: `claude plugin disable i-have-adhd` or use `/plugin disable i-have-adhd` from within CC. This disables the hook too.
 
 More in [INSTALL.md](./INSTALL.md).
 
 ## What it does
 
-A Claude Code skill that stops burying the answer. Action first. Steps numbered. No "Hope this helps!"
+A Claude Code plugin that stops burying the answer. Claude does the work itself, leads with the outcome, numbers what's left, and never says "Hope this helps!"
 
 
 ## What changes
@@ -45,13 +45,13 @@ A Claude Code skill that stops burying the answer. Action first. Steps numbered.
 
 ## After
 
-> Run `npm install jsonwebtoken@latest`, then edit `src/auth.ts:42`.
+> Fixed: `verifyToken` (`src/auth.ts:42-58`) now uses `jwt.verify` from `jsonwebtoken@9`.
 >
-> 1. Open `src/auth.ts`
-> 2. Replace `verifyToken` (lines 42–58) with the snippet below
-> 3. Run `npm test -- auth.spec.ts`
+> 1. Installed `jsonwebtoken@9`
+> 2. Rewrote `verifyToken`
+> 3. `npm test -- auth.spec.ts`: 12/12 pass
 >
-> Next: paste the first failing line if any test fails.
+> Next: nothing on you. Separately: there's a stale dependency — handle it next?
 
 </td>
 </tr>
@@ -60,24 +60,29 @@ A Claude Code skill that stops burying the answer. Action first. Steps numbered.
 
 ## The rules
 
-10 rules. Full text in [SKILL.md](./skills/i-have-adhd/SKILL.md).
+Rule 0 plus 8 rules. Full text in [SKILL.md](./skills/apply/SKILL.md).
 
-1. Lead with the next action.
-2. Number multi-step tasks.
-3. End with one concrete next step.
-4. Suppress tangents.
-5. Restate state every turn.
-6. Specific time estimates (minutes, not "a bit").
-7. Make wins visible.
-8. Matter-of-fact errors.
-9. Cap lists at 5 items.
-10. No preamble. No recap. No closers.
+0. Do the work, don't assign it — never hand the reader a command Claude can run itself.
+1. Lead with the outcome or the reader's action; end when the answer is done.
+2. Number multi-step work; keep the position on screen ("step 3 of 5 done").
+3. One thread at a time — but safety findings are never tangents.
+4. One concrete next step, or say there is none.
+5. Estimate only the reader's hands-on time, anchored to a condition.
+6. Wins and errors equally plain: what works and how to see it; cause and fix, no apologies.
+7. Cap unordered lists at five; never compress a procedure or cut a findings inventory.
+8. Decide the small things yourself — every question hands the reader a task.
+
+Plus: silence between tool calls, and a re-grounding summary after long runs.
 
 ## Tune it
 
-Edit `skills/i-have-adhd/SKILL.md`. Re-invoke `/i-have-adhd`.
+Edit `skills/apply/SKILL.md` in your checkout, then re-sync the installed copy: `claude plugin marketplace update i-have-adhd && claude plugin update i-have-adhd`, then restart Claude Code. The hook reads the installed copy under Claude's plugin dir, not your checkout, so `/clear` alone won't pick up edits. `/i-have-adhd:apply` re-applies the currently-loaded rules mid-session.
+
+When a rule drifts, simplify rather than tighten: one sentence of goal plus reason ("Start with the answer — the reader acts on the first line") beats a longer blocklist. On current models, ALL-CAPS emphasis and forbidden-phrase lists reduce compliance.
 
 ## Credits
+
+Originally created by [Ayoub G.](https://github.com/ayghri/i-have-adhd). This fork rewrites the rules for Claude's current model generation and makes them always-on via a SessionStart hook.
 
 Loosely based on *The Adult ADHD Tool Kit* by J. Russell Ramsay and Anthony L. Rostain. Adapted for how an LLM should respond, not how a human should organize their day.
 
