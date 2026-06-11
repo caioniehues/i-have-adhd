@@ -5,6 +5,9 @@
   <strong align="center">ADHD-friendly outputs. No ADHD diagnosis needed!</strong>
 </p>
 <p align="center">
+  <em>My personal Claude Code plugin &amp; output style — opinionated by design, tuned to one brain (mine). Fork it to tune it to yours.</em>
+</p>
+<p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/caioniehues/i-have-adhd?style=flat" alt="License"></a>
 </p>
 
@@ -17,15 +20,17 @@ claude plugin marketplace add ./i-have-adhd
 claude plugin install i-have-adhd@i-have-adhd
 ```
 
-Open Claude Code — the rules load automatically at session start (a `SessionStart` hook injects them; no command needed). To re-apply them mid-session: `/i-have-adhd:apply`.
+Open Claude Code — the plugin ships an output style that auto-applies while the plugin is enabled, so the rules are active from message one (no command, no hook). To re-apply them mid-session: `/i-have-adhd:apply`.
 
-To disable: `claude plugin disable i-have-adhd` or use `/plugin disable i-have-adhd` from within CC. This disables the hook too.
+To disable: `claude plugin disable i-have-adhd` or use `/plugin disable i-have-adhd` from within CC. This removes the output style too.
 
 More in [INSTALL.md](./INSTALL.md).
 
 ## What it does
 
-A Claude Code plugin that stops burying the answer. Claude does the work itself, leads with the outcome, numbers what's left, and never says "Hope this helps!"
+My personal Claude Code plugin — the output style I run in every session. It stops burying the answer: Claude does the work itself, leads with the outcome, numbers what's left, and never says "Hope this helps!"
+
+Because it's personal, the rules encode my preferences (down to how often an ★ Insight is allowed to appear). If yours differ, fork and edit one file — see [Tune it](#tune-it).
 
 
 ## What changes
@@ -60,7 +65,7 @@ A Claude Code plugin that stops burying the answer. Claude does the work itself,
 
 ## The rules
 
-Rule 0 plus 8 rules. Full text in [SKILL.md](./skills/apply/SKILL.md).
+Rule 0 plus 9 rules. Full text in [the output style](./output-styles/i-have-adhd.md).
 
 0. Do the work, don't assign it — never hand the reader a command Claude can run itself.
 1. Lead with the outcome or the reader's action; end when the answer is done.
@@ -71,18 +76,31 @@ Rule 0 plus 8 rules. Full text in [SKILL.md](./skills/apply/SKILL.md).
 6. Wins and errors equally plain: what works and how to see it; cause and fix, no apologies.
 7. Cap unordered lists at five; never compress a procedure or cut a findings inventory.
 8. Decide the small things yourself — every question hands the reader a task.
+9. Box the rare non-obvious thing as an ★ Insight — two sentences max, never the first or last line.
 
 Plus: silence between tool calls, and a re-grounding summary after long runs.
 
+## ★ Insights
+
+Borrowed from Claude Code's Explanatory output style, retuned for an ADHD reader: an insight appears only when the work surfaced something genuinely non-obvious — a gotcha, a hidden tradeoff, a pattern you'll meet again. Most answers have none; the marker only works while it's rare. It sits mid-message (the first line stays the outcome, the last line stays your next action), so it's as easy to skip as to spot:
+
+```
+★ Insight ─────────────────────────────────
+jwt.decode parses the token but never checks
+the signature — auth that "works" with it is
+silently unverified.
+───────────────────────────────────────────
+```
+
 ## Tune it
 
-Edit `skills/apply/SKILL.md` in your checkout, then re-sync the installed copy: `claude plugin marketplace update i-have-adhd && claude plugin update i-have-adhd`, then restart Claude Code. The hook reads the installed copy under Claude's plugin dir, not your checkout, so `/clear` alone won't pick up edits. `/i-have-adhd:apply` re-applies the currently-loaded rules mid-session.
+Edit `output-styles/i-have-adhd.md` in your checkout, then re-sync the installed copy: `claude plugin marketplace update i-have-adhd && claude plugin update i-have-adhd`, then restart Claude Code. Claude Code loads the installed copy under its plugin dir, not your checkout, so `/clear` alone won't pick up edits. `/i-have-adhd:apply` re-applies the currently-installed rules mid-session.
 
 When a rule drifts, simplify rather than tighten: one sentence of goal plus reason ("Start with the answer — the reader acts on the first line") beats a longer blocklist. On current models, ALL-CAPS emphasis and forbidden-phrase lists reduce compliance.
 
 ## Credits
 
-Originally created by [Ayoub G.](https://github.com/ayghri/i-have-adhd). This fork rewrites the rules for Claude's current model generation and makes them always-on via a SessionStart hook.
+Originally created by [Ayoub G.](https://github.com/ayghri/i-have-adhd). This fork rewrites the rules for Claude's current model generation and makes them always-on via a force-applied output style. It's my daily-driver configuration: rules and defaults follow my preferences and may change without notice — fork freely.
 
 Loosely based on *The Adult ADHD Tool Kit* by J. Russell Ramsay and Anthony L. Rostain. Adapted for how an LLM should respond, not how a human should organize their day.
 

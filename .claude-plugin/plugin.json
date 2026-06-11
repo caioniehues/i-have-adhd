@@ -1,7 +1,7 @@
 {
   "name": "i-have-adhd",
-  "version": "1.0.0",
-  "description": "ADHD-friendly output shaping for Claude Code. Rules load automatically at session start via a SessionStart hook; /i-have-adhd:apply re-applies them mid-session.",
+  "version": "1.1.0",
+  "description": "Caio's personal ADHD-friendly output shaping for Claude Code. Ships an always-on output style that auto-applies while the plugin is enabled; /i-have-adhd:apply re-applies the rules mid-session.",
   "author": {
     "name": "Caio Niehues",
     "email": "cniehues1@gmail.com"
