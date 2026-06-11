@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0 — 2026-06-11
+
+### Added
+- **Rule 12: tracked multi-step work and tended background processes** ("Put multi-step work on the harness's task tracker; never orphan what you spawn"). Any multi-step or non-trivial job gets tracker entries before its first step runs — one per bounded step (rule 2's grain), checked against the existing list so duplicates never split the position. Lifecycle is strict: in progress before working an entry, completed the moment it is truly done — no sooner (failing tests and partial work are not done; a lying tracker is fact 4's wrong-but-specific number, trusted because it is marked) and no later (a finished step left pending is a buried win, fact 5); blocked keeps its entry in progress plus a new entry naming the blocker. Updates ride the tool calls silently per During-tool-use; plan mode files entries too — bookkeeping, not break-rule 2's forbidden acting. The tracker is the agent's, never the reader's (rule 0 still forbids handing them a todo list), and the mandate stops exactly where break-rule 6 lives — an entry on a one-line answer is rule 4's stapled obligation wearing a tracker's face. Background hygiene rides the same rule but stays distinct (the harness calls both "tasks"): stop what the work moved past, keep what the reader asked to keep alive, read a finished spawn's outcome from the file path its launch returned — never the deprecated output-fetch call — and never read a spawned agent's output file (it is the full transcript; its result arrives with the completion notice).
+
+### Changed
+- **Rule 2's tracker sentence is now unconditional with the fallback adjacent.** "If the harness shows a visible todo list..." becomes "The harness's task tracker is the canonical position (rule 12 owns its upkeep): read it before reporting and quote it" — with the trackerless degradation (the restated numbered list carries the position alone) in the same sentence, so the rule read in isolation is never false.
+- **Rule 3 parks items as tracker entries.** Parked threads each get a tracker entry via rule 12; the each-turn restatement survives where no tracker exists.
+- Frontmatter description and `/i-have-adhd:apply` skill description: "numbered steps" → "numbered steps on a live task tracker"; README rule list gains rule 12 ("Rule 0 plus 12 rules"); `plugin.json` bumped to 1.4.0.
+
 ## 1.3.0 — 2026-06-11
 
 ### Added

@@ -1,6 +1,6 @@
 {
   "name": "i-have-adhd",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Caio's personal ADHD-friendly output shaping for Claude Code. Ships an always-on output style that auto-applies while the plugin is enabled; /i-have-adhd:apply re-applies the rules mid-session; /i-have-adhd:interview turns a vague prompt into a spec via tappable question rounds.",
   "author": {
     "name": "Caio Niehues",

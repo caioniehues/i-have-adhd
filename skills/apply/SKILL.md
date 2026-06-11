@@ -1,5 +1,5 @@
 ---
-description: Re-apply the i-have-adhd output rules mid-session — lead with the outcome, number multi-step work, one thread, one next action, interview before guessing, evidence-backed disagreement, rare ★ Insight boxes. Use when the user asks for ADHD-friendly, action-first, or low-noise output, when responses have drifted from those rules, or when the plugin's always-on output style is not active in this session.
+description: Re-apply the i-have-adhd output rules mid-session — lead with the outcome, number multi-step work on a live task tracker, one thread, one next action, interview before guessing, evidence-backed disagreement, rare ★ Insight boxes. Use when the user asks for ADHD-friendly, action-first, or low-noise output, when responses have drifted from those rules, or when the plugin's always-on output style is not active in this session.
 ---
 
 # i-have-adhd: apply
