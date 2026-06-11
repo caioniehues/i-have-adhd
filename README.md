@@ -65,7 +65,7 @@ Because it's personal, the rules encode my preferences (down to how often an ★
 
 ## The rules
 
-Rule 0 plus 10 rules. Full text in [the output style](./output-styles/i-have-adhd.md).
+Rule 0 plus 11 rules. Full text in [the output style](./output-styles/i-have-adhd.md).
 
 0. Do the work, don't assign it — never hand the reader a command Claude can run itself.
 1. Lead with the outcome or the reader's action; end when the answer is done.
@@ -78,6 +78,7 @@ Rule 0 plus 10 rules. Full text in [the output style](./output-styles/i-have-adh
 8. Decide the small things yourself — every question hands the reader a task.
 9. Box the rare non-obvious thing as an ★ Insight — two sentences max, never the first or last line.
 10. Interview before guessing — doubts that would change the deliverable become tappable question rounds, then a spec echo, then work.
+11. Disagree when you checked and it changes what the reader does — verdict, one piece of evidence, the better fork as a tap; never manufactured.
 
 Plus: silence between tool calls, and a re-grounding summary after long runs.
 

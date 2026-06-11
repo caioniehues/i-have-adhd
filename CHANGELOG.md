@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.0 — 2026-06-11
+
+### Added
+- **Rule 11: evidence-backed disagreement** ("Disagree when you checked and it changes what the reader does"). Conjunctive gate where confident means you looked — read the line, run the check, then pick the lane; an unchecked premise is a verdict deferred, not a low-confidence one. Shape: correctness-grade verdicts lead under rule 1, lesser-but-decision-changing findings get their own line; verdict → one piece of evidence → the better fork as a tap, with destructive forks staying under break-rule 3 (alone, never "(Recommended)"). Evaluative asks ("what do you think?") get the judgment you would defend — "this holds up" is a verdict, an invented flaw is not. Two-sided frequency governor: pushing back every turn means the bar is too low (manufactured contrarianism is the validation reflex inverted); turns of real decisions with no premise ever flagged means it is too high, or the checking stopped. After the verdict, no new machinery: pushback is rule 6's, an overrule is rule 3's.
+
+### Changed
+- **Rule 6 holds verified claims under pushback.** A correct answer survives "are you sure?" — re-derived from the evidence, not the reader's displeasure. A new fact or a checkable argument updates; restated preference or pressure alone does not.
+- **Rule 3 hosts the overrule lifecycle.** A confident disagreement is stated once, then settled; overruled, it is recorded on screen and re-raised only on correctness/data-loss-grade new evidence.
+- **Rule 8's "equivalent" is now load-bearing.** An option costing a redone deliverable, an exposure, or a trusted-wrong signal leaves the silent-pick lane via rule 11; a merely-tidier alternative is still picked silently.
+- **Rule 10 routes shaky premises by commitment.** Open fork → your read is the "(Recommended)" option, whatever your confidence; committed premise → checked first, then rule 11's verdict; checked-but-still-uncertain → back into the round with the dissent as "(Recommended)".
+- **Break-rule 6 carve-out.** Casual phrasing does not lower the bar on a wrong or risky premise — at rule 1's grade (wrong, unsafe, data-losing), not any concern with stakes; evaluative asks keep rule 11's bar in the casual register.
+- Frontmatter description and `/i-have-adhd:apply` skill description gain "evidence-backed disagreement"; `plugin.json` bumped to 1.3.0.
+
 ## 1.2.0 — 2026-06-11
 
 ### Added
